@@ -1,13 +1,15 @@
 [project]
 name = "interactive-us-state-capitals-quiz"
 version = "0.1.0"
-description = "Add your description here"
+description = "A Python command-line application that generates a randomized US state capitals quiz"
 readme = "README.md"
 authors = [
     { name = "jeremie1207", email = "jbarh086@uottawa.ca" }
 ]
 requires-python = ">=3.14"
-dependencies = []
+dependencies = [
+    "click>=8.5.0",
+]
 
 [project.scripts]
 interactive-us-state-capitals-quiz = "interactive_us_state_capitals_quiz:main"
@@ -15,3 +17,75 @@ interactive-us-state-capitals-quiz = "interactive_us_state_capitals_quiz:main"
 [build-system]
 requires = ["uv_build>=0.12.7,<0.13.0"]
 build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "bandit>=1.9.4",
+    "mypy>=2.3.1",
+    "pytest>=9.1.1",
+    "ruff>=0.16.6",
+]
+
+# ============================================================
+# Ruff
+# ============================================================
+
+[tool.ruff]
+line-length = 79
+target-version = "py314"
+
+[tool.ruff.lint]
+select = [
+    "E",      # pycodestyle errors
+    "W",      # pycodestyle warnings
+    "F",      # Pyflakes
+    "I",      # isort
+    "B",      # flake8-bugbear
+    "UP",     # pyupgrade
+    "SIM",    # flake8-simplify
+    "S",      # flake8-bandit
+]
+
+# Tests sometimes intentionally use patterns that Bandit flags.
+[tool.ruff.lint.per-file-ignores]
+"tests/**/*.py" = ["S101"]  # assert is expected in pytest tests
+
+
+# ============================================================
+# Mypy
+# ============================================================
+
+[tool.mypy]
+python_version = "3.14"
+strict = true
+
+# Make imports more predictable when using a src/ layout.
+# mypy_path = "src"
+
+# Don't type-check third-party libraries that don't provide
+# type information.
+ignore_missing_imports = true
+
+# Make sure mypy checks both application and test code.
+files = ["src", "tests"]
+
+
+# ============================================================
+# Bandit
+# ============================================================
+
+[tool.bandit]
+target = ["src"]
+exclude_dirs = ["tests"]
+
+
+# ============================================================
+# Pytest
+# ============================================================
+
+[pytest]
+minversion = "9.0"
+addopts = ["-ra", "-q"]
+testpaths = [
+    "tests"
+]
