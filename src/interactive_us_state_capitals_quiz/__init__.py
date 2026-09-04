@@ -3,30 +3,27 @@ import logging
 import sys
 
 from pathlib import Path
-from interactive_us_state_capitals_quiz.quiz import CapitalQuiz
-
-
+from interactive_us_state_capitals_quiz.quiz import USStateCapitalQuiz
 
 
 logging.basicConfig(
     level=logging.DEBUG,
     format="%(asctime)s [%(levelname)s] %(message)s",
-    stream=sys.stdout
+    stream=sys.stdout,
 )
 
 logger = logging.getLogger(__name__)
 
 
-def generate_output_file(quiz: CapitalQuiz) -> None:
+def generate_output_file(quiz: USStateCapitalQuiz) -> None:
     """Generate a detailed results file"""
-    result_file = Path('quiz_results.txt')
+    result_file = Path("quiz_results.txt")
 
-    with result_file.open(mode='w', encoding='utf-8') as file:
+    with result_file.open(mode="w", encoding="utf-8") as file:
         file.write("""
 US State Capitals Quiz - Results
 ================================
-        """
-        )
+        """)
 
         file.write("\n\n")
 
@@ -40,22 +37,25 @@ US State Capitals Quiz - Results
             file.write("\n")
             file.write(f"{question.text}\n")
 
-            file.write(f"Your answer: {question.options[question.user_answer]}\n")
+            file.write(
+                f"Your answer: {question.options[question.user_answer]}\n"
+            )
             file.write(f"Correct answer: {question.answer}\n")
-            file.write(f"Result: {'Correct' if question.check_answer() else 'Incorrect'}\n")
-            file.write("----------------------------------------------------------------")
+            file.write(
+                f"Result: {'Correct' if question.check_answer() else 'Incorrect'}\n"
+            )
+            file.write(
+                "----------------------------------------------------------------"
+            )
             file.write("\n\n")
 
 
-
-
 @click.command()
-@click.argument("n", type=int)
+@click.argument("n", type=int, help="number of question")
 def create_quiz(n: int) -> None:
-    
 
     logger.info(f"Create a us state capitals quiz with {n} questions")
-    quiz = CapitalQuiz(n)
+    quiz = USStateCapitalQuiz(n)
 
     logger.info("Initialize the question...")
     quiz.initialize()
@@ -99,6 +99,7 @@ def create_quiz(n: int) -> None:
 
     logger.info("Generate a detailed results file")
     generate_output_file(quiz)
+
 
 def main() -> None:
     create_quiz()
