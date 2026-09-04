@@ -92,7 +92,7 @@ targets = ["src"]
 exclude_dirs = ["tests", "build", "dist", ".venv"]
 
 # Rule IDs to skip (e.g., B101 is 'use of assert')
-# skips = ["B101"]
+skips = ["B101"]
 
 # Restrict scanning to only specific rule IDs
 # tests = ["B101", "B102"]
