@@ -106,8 +106,7 @@ The CLI argument is defined using Click:
 ```python
 @click.command()
 @click.argument("n", type=int, help="number of question")
-def create_quiz(n: int) -> None:
-    ...
+def create_quiz(n: int) -> None: ...
 ```
 
 ### 2. Generate the Quiz
@@ -339,7 +338,7 @@ Logging is configured to display messages in the terminal:
 logging.basicConfig(
     level=logging.DEBUG,
     format="%(asctime)s [%(levelname)s] %(message)s",
-    stream=sys.stdout
+    stream=sys.stdout,
 )
 ```
 

@@ -68,7 +68,8 @@ class USStateCapitalQuiz(Quiz):
         self.score = 0
 
         selected_state = random.sample(
-            list(capitals.keys()), self.number_of_question # nosec B311
+            list(capitals.keys()),
+            self.number_of_question,  # nosec B311
         )
         for state in selected_state:
             text: str = f"What is the capital of {state}?"
@@ -80,7 +81,7 @@ class USStateCapitalQuiz(Quiz):
                 if cap != capitals[state]
             ]
 
-            options_list = random.sample(filtered_capital, 3) # nosec B311
+            options_list = random.sample(filtered_capital, 3)  # nosec B311
             options_list.append(answer)
             random.shuffle(options_list)
 
