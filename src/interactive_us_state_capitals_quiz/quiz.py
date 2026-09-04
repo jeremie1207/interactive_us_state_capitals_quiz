@@ -22,9 +22,7 @@ class Question:
             ValueError: raise an error when the user provide an invalid answer
         """
         if answer not in {"A", "B", "C", "D"}:
-            raise ValueError(
-            f"Invalid answer : {answer}, The answer should be A, B, C, or D"
-            )
+            raise ValueError("The answer should be A, B, C, or D")
         self.user_answer = answer
 
     def check_answer(self) -> bool:
@@ -61,7 +59,7 @@ class USStateCapitalQuiz(Quiz):
     def __init__(self, number_of_question: int) -> None:
         if not 1 <= number_of_question <= 50:
             raise ValueError(
-            "Invalid input: the number of questions should be between 1 and 50"
+                "The number of questions should be between 1 and 50"
             )
         super().__init__(number_of_question)
 
