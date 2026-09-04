@@ -4,9 +4,9 @@ from interactive_us_state_capitals_quiz.data import capitals
 
 
 class Question:
-    def __init__(self, text: str,
-                answer: str,
-                options: dict[str, str]) -> None:
+    def __init__(
+        self, text: str, answer: str, options: dict[str, str]
+    ) -> None:
         self.text = text
         self.answer = answer
         self.options = options
@@ -21,9 +21,9 @@ class Question:
         Raises:
             ValueError: raise an error when the user provide an invalid answer
         """
-        if answer not in {'A', 'B', 'C', 'D'}:
+        if answer not in {"A", "B", "C", "D"}:
             raise ValueError(
-            f"Invalid answer : {answer}, The answer should be A, B, C, or D"
+                f"Invalid answer : {answer}, The answer should be A, B, C, or D"
             )
         self.user_answer = answer
 
@@ -46,26 +46,29 @@ class Quiz:
         self.score = 0
 
     def calculate_score(self) -> None:
-        """Calculate quiz score
-        """
+        """Calculate quiz score"""
         self.score = 0
         for question in self.questions:
             if question.check_answer():
                 self.score += 1
 
-
     def get_score_in_percent(self) -> float:
-        """Return score in percent
-        """
+        """Return score in percent"""
         return (self.score / self.number_of_question) * 100
+
 
 class CapitalQuiz(Quiz):
     def __init__(self, number_of_question: int) -> None:
+        if not 1 <= number_of_question <= 50:
+            raise ValueError(
+            "Invalid input: the number of questions should be between 1 and 50"
+            )
         super().__init__(number_of_question)
 
     def initialize(self) -> None:
-        selected_state = random.sample(list(capitals.keys()),
-                                    self.number_of_question)
+        selected_state = random.sample(
+            list(capitals.keys()), self.number_of_question
+        )
         for state in selected_state:
             text: str = f"What is the capital of {state}?"
             answer: str = capitals[state]
@@ -79,10 +82,10 @@ class CapitalQuiz(Quiz):
             random.shuffle(options_list)
 
             options: dict[str, str] = {
-                'A': options_list[0],
-                'B': options_list[1],
-                'C': options_list[2],
-                'D': options_list[3]
+                "A": options_list[0],
+                "B": options_list[1],
+                "C": options_list[2],
+                "D": options_list[3],
             }
 
             question = Question(text, answer, options)
