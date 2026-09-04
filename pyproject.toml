@@ -20,6 +20,7 @@ build-backend = "uv_build"
 
 [dependency-groups]
 dev = [
+    "bandit>=1.9.4",
     "mypy>=2.3.1",
     "pytest>=9.1.1",
     "ruff>=0.16.6",
@@ -82,3 +83,24 @@ addopts = ["-rA", "-s", "-v"]
 testpaths = [
     "tests"
 ]
+
+[tool.bandit]
+# Targets to scan (tests removed)
+targets = ["src"]
+
+# Exclude specific directories or pattern paths
+exclude_dirs = ["tests", "build", "dist", ".venv"]
+
+# Rule IDs to skip (e.g., B101 is 'use of assert')
+# skips = ["B101"]
+
+# Restrict scanning to only specific rule IDs
+# tests = ["B101", "B102"]
+
+# Minimum severity and confidence levels to report
+# Options: "UNDEFINED", "LOW", "MEDIUM", "HIGH"
+# level = "LOW"
+# confidence = "MEDIUM"
+
+# Number of lines of context code to display around reported issues
+# number = 3
