@@ -3,7 +3,7 @@ import pytest
 from interactive_us_state_capitals_quiz.quiz import (
     Question,
     Quiz,
-    # USStateCapitalQuizCapitalQuiz,
+    USStateCapitalQuiz,
 )
 
 
@@ -71,3 +71,19 @@ def test_get_score_in_percent_quiz(
     sample_quiz.calculate_score()
 
     assert sample_quiz.get_score_in_percent() == expected_percent
+
+
+def test_us_state_capital_quiz():
+    with pytest.raises(
+        ValueError,
+        match=r"The number of questions should be between 1 and 50"
+    ):
+        USStateCapitalQuiz(51)
+
+def test_initialize_us_state_capital_quiz():
+    quiz = USStateCapitalQuiz(5)
+
+    quiz.initialize()
+
+    assert len(quiz.questions) == 5
+    assert quiz.score == 0
