@@ -57,7 +57,7 @@ class Quiz:
         return (self.score / self.number_of_question) * 100
 
 
-class CapitalQuiz(Quiz):
+class USStateCapitalQuiz(Quiz):
     def __init__(self, number_of_question: int) -> None:
         if not 1 <= number_of_question <= 50:
             raise ValueError(
