@@ -64,7 +64,8 @@ class CapitalQuiz(Quiz):
         super().__init__(number_of_question)
 
     def initialize(self) -> None:
-        selected_state = random.sample(list(capitals.keys()), self.number_of_question)
+        selected_state = random.sample(list(capitals.keys()),
+                                    self.number_of_question)
         for state in selected_state:
             text: str = f"What is the capital of {state}?"
             answer: str = capitals[state]
