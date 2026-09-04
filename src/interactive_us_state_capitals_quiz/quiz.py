@@ -64,6 +64,9 @@ class USStateCapitalQuiz(Quiz):
         super().__init__(number_of_question)
 
     def initialize(self) -> None:
+        self.questions: list[Question] = []
+        self.score = 0
+
         selected_state = random.sample(
             list(capitals.keys()), self.number_of_question
         )
