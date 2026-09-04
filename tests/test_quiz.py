@@ -73,14 +73,14 @@ def test_get_score_in_percent_quiz(
     assert sample_quiz.get_score_in_percent() == expected_percent
 
 
-def test_us_state_capital_quiz():
+def test_us_state_capital_quiz() -> None:
     with pytest.raises(
-        ValueError,
-        match=r"The number of questions should be between 1 and 50"
+        ValueError, match=r"The number of questions should be between 1 and 50"
     ):
         USStateCapitalQuiz(51)
 
-def test_initialize_us_state_capital_quiz():
+
+def test_initialize_us_state_capital_quiz() -> None:
     quiz = USStateCapitalQuiz(5)
 
     quiz.initialize()
