@@ -23,7 +23,7 @@ class Question:
         """
         if answer not in {"A", "B", "C", "D"}:
             raise ValueError(
-                f"Invalid answer : {answer}, The answer should be A, B, C, or D"
+            f"Invalid answer : {answer}, The answer should be A, B, C, or D"
             )
         self.user_answer = answer
 
