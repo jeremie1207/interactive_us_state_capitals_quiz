@@ -78,7 +78,7 @@ files = ["src", "tests"]
 
 [pytest]
 minversion = "9.0"
-addopts = ["-ra", "-q"]
+addopts = ["-rA", "-s", "-v"]
 testpaths = [
     "tests"
 ]
