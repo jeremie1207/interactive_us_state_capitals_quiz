@@ -72,7 +72,9 @@ class USStateCapitalQuiz(Quiz):
             answer: str = capitals[state]
 
             filtered_capital = [
-                cap for cap in list(capitals.values()) if cap != capitals
+                cap
+                for cap in list(capitals.values())
+                if cap != capitals[state]
             ]
 
             options_list = random.sample(filtered_capital, 3)
