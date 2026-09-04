@@ -491,6 +491,7 @@ Before committing changes, run the project's quality checks:
 uv run ruff format .
 uv run ruff check .
 uv run mypy .
+uv run bandit -c pyproject.toml -r .
 uv run pytest
 ```
 
