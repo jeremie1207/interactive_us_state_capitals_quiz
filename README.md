@@ -44,7 +44,6 @@ The goal is to transform a simple automation exercise into a small, reusable com
 - Includes automated tests.
 - Uses static type checking with Mypy.
 - Uses Ruff for linting and formatting.
-- Uses Bandit for security analysis.
 - Uses `uv` for project and dependency management.
 
 ## 🛠️ Technologies and Tools
@@ -59,7 +58,6 @@ The goal is to transform a simple automation exercise into a small, reusable com
 - **Pytest** — automated testing
 - **Ruff** — linting and code formatting
 - **Mypy** — static type checking
-- **Bandit** — security analysis
 
 The project does not require external runtime dependencies.
 
@@ -356,16 +354,6 @@ uv run mypy .
 
 The project uses type annotations to improve code reliability and maintainability.
 
-### Bandit
-
-Bandit is used to identify common security issues in the Python source code.
-
-Run Bandit against the source directory:
-
-```bash
-uv run bandit -r src
-```
-
 ## 🛠️ Development Workflow
 
 Before committing changes, run the project's quality checks:
@@ -374,7 +362,6 @@ Before committing changes, run the project's quality checks:
 uv run ruff format .
 uv run ruff check .
 uv run mypy .
-uv run bandit -r src
 uv run pytest
 ```
 

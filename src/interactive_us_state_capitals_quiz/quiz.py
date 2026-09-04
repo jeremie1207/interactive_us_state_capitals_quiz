@@ -60,7 +60,7 @@ class Quiz:
         return (self.score / self.number_of_question) * 100
 
 class CapitalQuiz(Quiz):
-    def __init__(self, number_of_question) -> None:
+    def __init__(self, number_of_question: int) -> None:
         super().__init__(number_of_question)
 
     def initialize(self) -> None:
