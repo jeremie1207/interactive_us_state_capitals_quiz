@@ -545,7 +545,6 @@ This project provides practice with several important Python concepts:
 
 Possible improvements for future versions include:
 
-* Validate that the requested number of questions is within the available number of states.
 * Add different categories of questions.
 * Add difficulty levels.
 * Allow the user to restart the quiz.
