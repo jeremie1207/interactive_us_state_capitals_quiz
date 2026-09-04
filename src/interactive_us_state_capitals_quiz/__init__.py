@@ -17,7 +17,9 @@ logger = logging.getLogger(__name__)
 
 def generate_output_file(quiz: USStateCapitalQuiz) -> None:
     """Generate a detailed results file"""
-    result_file = Path("quiz_results.txt")
+    output_folder = Path("output")
+    output_folder.mkdir(exist_ok=True)
+    result_file = output_folder / "quiz_results.txt"
 
     with result_file.open(mode="w", encoding="utf-8") as file:
         file.write("""
@@ -71,11 +73,14 @@ def create_quiz(n: int) -> None:
     for index, question in enumerate(quiz.questions):
         click.echo(f"Question {index + 1}/{quiz.number_of_question}")
 
+        click.echo("\n")
         click.echo(f"{question.text}")
+        click.echo("\n")
 
         for letter, option in question.options.items():
             click.echo(f"{letter}. {option}")
 
+        click.echo("\n")
         user_answer = input("Your answer: ")
 
         try:
@@ -96,6 +101,7 @@ def create_quiz(n: int) -> None:
 
     click.echo(f"Score: {quiz.score}/{quiz.number_of_question}")
     click.echo(f"Percent: {int(quiz.get_score_in_percent())}%")
+    click.echo("\n")
 
     logger.info("Generate a detailed results file")
     generate_output_file(quiz)
