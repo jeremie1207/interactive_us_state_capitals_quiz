@@ -96,7 +96,7 @@ The number of questions is provided as a command-line argument.
 For example:
 
 ```bash
-uv run state-capitals 5
+uv run interactive-us-state-capitals-quiz 5
 ```
 
 The `5` tells the application to generate a quiz containing five questions.
@@ -273,7 +273,7 @@ where `N` represents the number of questions.
 For example:
 
 ```bash
-uv run state-capitals 10
+uv run interactive-us-state-capitals-quiz 10
 ```
 
 generates a quiz containing ten questions.
@@ -402,7 +402,7 @@ state-capitals = "interactive_us_state_capitals_quiz.main:main"
 the application can be executed with:
 
 ```bash
-uv run state-capitals 5
+uv run interactive-us-state-capitals-quiz 5
 ```
 
 Replace `5` with the desired number of questions.
@@ -410,7 +410,7 @@ Replace `5` with the desired number of questions.
 For example:
 
 ```bash
-uv run state-capitals 10
+uv run interactive-us-state-capitals-quiz 10
 ```
 
 generates a ten-question quiz.
@@ -426,7 +426,7 @@ uv run python -m interactive_us_state_capitals_quiz.main 5
 Using a package entry point such as:
 
 ```bash
-uv run state-capitals 5
+uv run interactive-us-state-capitals-quiz 5
 ```
 
 is preferred for a command-line application because users do not need to know where the source files are located.
