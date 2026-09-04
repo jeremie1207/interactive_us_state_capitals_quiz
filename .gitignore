@@ -8,3 +8,6 @@ wheels/
 
 # Virtual environments
 .venv
+
+# Result file
+quiz_results.txt
